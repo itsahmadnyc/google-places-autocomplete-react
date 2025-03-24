@@ -1,0 +1,27 @@
+{
+  "name": "google-places-autocomplete-react",
+  "version": "1.0.8",
+  "description": "A lightweight React component for Google Places autocomplete.",
+  "main": "src/index.jsx",
+  "module": "src/index.jsx",
+  "types": "src/index.d.ts",
+  "keywords": [
+    "google places",
+    "react",
+    "autocomplete",
+    "places api"
+  ],
+  "author": "Muhammad Ahmad",
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "prettier": "^3.1.0"
+  }
+}

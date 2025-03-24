@@ -164,7 +164,7 @@ Contributions are welcome! If you’d like to improve this package:
 ## 💬 Support
 
 If you encounter any issues or have suggestions, feel free to:
-- Open an issue on [GitHub](https://github.com/its_ahmad_nyc/google-places-autocomplete-react/issues)
+- Open an issue on [GitHub](https://github.com/its_ahmad_nyc/google-places-autocomplete-react)
 - Reach out via Twitter
 
 Happy coding! 🚀

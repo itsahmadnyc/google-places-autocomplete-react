@@ -1,6 +1,6 @@
 {
   "name": "google-places-autocomplete-react",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A lightweight React component for Google Places autocomplete.",
   "main": "src/index.jsx",
   "module": "src/index.jsx",

@@ -86,17 +86,19 @@ const handlePlaceSelect = (place) => {
 
 ### 4️⃣ Styling the Input Field
 
-The component applies minimal default styles, allowing easy customization:
+This component allows full customization via props.
 
-```css
-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    outline: none;
-}
+```jsx
+<GooglePlacesAutocomplete
+    apiKey="YOUR_GOOGLE_API_KEY"
+    onPlaceSelect={handlePlaceSelect}
+    inputClassName="custom-input"
+    suggestionsClassName="custom-suggestions"
+    suggestionItemClassName="custom-suggestion-item"
+    inputStyle={{ padding: "10px", fontSize: "16px" }}
+    suggestionsStyle={{ backgroundColor: "white", borderRadius: "5px" }}
+    suggestionItemStyle={{ padding: "8px", cursor: "pointer" }}
+/>
 ```
 
 ---
@@ -108,6 +110,12 @@ input {
 | `apiKey`      | `string`  | ✅ Yes   | Your Google Maps API key.                      |
 | `onPlaceSelect` | `function` | ✅ Yes   | Callback function triggered when a place is selected. |
 | `placeholder` | `string`  | ❌ No   | Placeholder text for the input field (default: "Search for a location"). |
+| `inputClassName` | `string`  | ❌ No   | Custom class name for the input field. |
+| `suggestionsClassName` | `string`  | ❌ No   | Custom class name for the suggestions dropdown. |
+| `suggestionItemClassName` | `string`  | ❌ No   | Custom class name for each suggestion item. |
+| `inputStyle` | `object`  | ❌ No   | Inline styles for the input field. |
+| `suggestionsStyle` | `object`  | ❌ No   | Inline styles for the suggestions container. |
+| `suggestionItemStyle` | `object`  | ❌ No   | Inline styles for suggestion items. |
 
 ---
 

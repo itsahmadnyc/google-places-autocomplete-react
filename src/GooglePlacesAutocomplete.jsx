@@ -1,18 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
-const GooglePlacesAutocomplete = ({ apiKey, onPlaceSelect, placeholder }) => {
+const GooglePlacesAutocomplete = ({
+    apiKey,
+    onPlaceSelect,
+    placeholder = "Search for a location",
+    inputClassName = "",
+    suggestionsClassName = "",
+    suggestionItemClassName = "",
+    inputStyle = {},
+    suggestionsStyle = {},
+    suggestionItemStyle = {},
+}) => {
     const inputRef = useRef(null);
     const [suggestions, setSuggestions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [location, setLocation] = useState("");
 
-    
     const preventFormSubmitOnEnter = (e) => {
         if (e.key === "Enter") e.preventDefault();
     };
 
-    
     useEffect(() => {
         if (!document.getElementById("google-maps")) {
             const script = document.createElement("script");
@@ -24,7 +32,6 @@ const GooglePlacesAutocomplete = ({ apiKey, onPlaceSelect, placeholder }) => {
         }
     }, [apiKey]);
 
-    
     const fetchLocationSuggestions = (query) => {
         if (!query.trim() || !window.google?.maps) {
             setSuggestions([]);
@@ -44,7 +51,6 @@ const GooglePlacesAutocomplete = ({ apiKey, onPlaceSelect, placeholder }) => {
         });
     };
 
-    
     const fetchPlaceDetails = (placeId, description) => {
         if (!window.google?.maps) return;
 
@@ -74,32 +80,39 @@ const GooglePlacesAutocomplete = ({ apiKey, onPlaceSelect, placeholder }) => {
                     fetchLocationSuggestions(e.target.value);
                 }}
                 onKeyDown={preventFormSubmitOnEnter}
-                placeholder={placeholder || "Search for a location"}
-                className="w-full px-3 py-2 border rounded-md outline-none"
+                placeholder={placeholder}
+                className={`w-full outline-none ${inputClassName}`}
+                style={inputStyle}
             />
             {loading && <p className="text-gray-500">Loading...</p>}
             {suggestions.length > 0 && (
-               <ul className="absolute z-10 w-full bg-white border rounded shadow">
-               {suggestions.map((suggestion) => (
-                   <li
-                       key={suggestion.place_id}
-                       className="p-2 cursor-pointer hover:bg-gray-100 text-black"
-                       onClick={() => fetchPlaceDetails(suggestion.place_id, suggestion.description)}
-                   >
-                       {suggestion.description}
-                   </li>
-               ))}
-           </ul>           
+                <ul className={`absolute z-10 w-full border rounded shadow ${suggestionsClassName}`} style={suggestionsStyle}>
+                    {suggestions.map((suggestion) => (
+                        <li
+                            key={suggestion.place_id}
+                            className={`p-2 cursor-pointer ${suggestionItemClassName}`}
+                            style={suggestionItemStyle}
+                            onClick={() => fetchPlaceDetails(suggestion.place_id, suggestion.description)}
+                        >
+                            {suggestion.description}
+                        </li>
+                    ))}
+                </ul>
             )}
         </div>
     );
 };
 
-
 GooglePlacesAutocomplete.propTypes = {
     apiKey: PropTypes.string.isRequired,
     onPlaceSelect: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
+    inputClassName: PropTypes.string,
+    suggestionsClassName: PropTypes.string,
+    suggestionItemClassName: PropTypes.string,
+    inputStyle: PropTypes.object,
+    suggestionsStyle: PropTypes.object,
+    suggestionItemStyle: PropTypes.object,
 };
 
 export default GooglePlacesAutocomplete;

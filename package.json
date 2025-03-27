@@ -19,6 +19,10 @@
     "react location picker"
   ],
   "author": "Muhammad Ahmad",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itsahmadnyc/google-places-autocomplete-react.git"
+  },
   "license": "MIT",
   "dependencies": {
     "prop-types": "^15.8.1",
